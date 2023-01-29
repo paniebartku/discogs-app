@@ -27,8 +27,9 @@ const initialState: InitialState = {
 
 export const fetchCollection = createAsyncThunk(
   "collection/fetchCollection",
-  () => {
-    return API_ROUTES.getCollection(username).then(response => response.data);
+  async () => {
+    const res = await API_ROUTES.getCollection(username);
+    return res.data;
   }
 );
 
