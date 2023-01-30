@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import collectionReducer from "../features/collection/collectionSlice";
 import profileReducer from "../features/profile/profileSlice";
+import loginReducer from "../features/login/loginSlice";
 
 const store = configureStore({
   reducer: {
     collection: collectionReducer,
     profile: profileReducer,
+    login: loginReducer,
   },
 });
 

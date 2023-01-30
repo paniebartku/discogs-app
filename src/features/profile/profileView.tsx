@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import validator from "validator";
 
-import { fetchProfile, updateProfile } from "./profileSlice";
+import { fetchProfile, updateProfile, getToken } from "./profileSlice";
 import { toString, isEmpty } from "lodash";
 
 interface IFormInputs {
@@ -42,6 +42,7 @@ const ProfileView = () => {
 
   useEffect(() => {
     dispatch(fetchProfile());
+    dispatch(getToken());
   }, [dispatch]);
 
   return (
