@@ -26,14 +26,6 @@ export const fetchProfile = createAsyncThunk(
   }
 );
 
-export const getToken = createAsyncThunk(
-  "profile/token",
-  async () => {
-    const res = await API_ROUTES.getRequestToken();
-    return res.data;
-  }
-);
-
 export const updateProfile = createAsyncThunk(
   "profile/updateProfile",
   async (data: any) => {
@@ -51,15 +43,6 @@ const profileSlice = createSlice({
     builder.addCase(
       updateProfile.fulfilled,
       (state, action: PayloadAction<Profile>) => {
-        state.loading = false;
-        state.data = action.payload;
-        state.error = "";
-      }
-    );
-
-    builder.addCase(
-      getToken.fulfilled,
-      (state, action) => {
         state.loading = false;
         state.data = action.payload;
         state.error = "";

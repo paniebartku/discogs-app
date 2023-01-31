@@ -19,7 +19,7 @@ const axiosHeaders = {
   "Content-Type": "application/x-www-form-urlencoded",
   Authorization: `OAuth oauth_consumer_key="rqkndXRSvOcLZbpsaZPY", oauth_nonce="${uuidv4()}", oauth_signature="PDupbNiwXzRyQHeqZWLtghppaSFfgsON&", oauth_signature_method="PLAINTEXT", oauth_timestamp="${Math.floor(
     Date.now() / 1000
-  ).toString()}", oauth_callback="your_callback"`,
+  ).toString()}", oauth_callback="http://localhost:3000"`,
 };
 
 export const authRequestApi = axios.create({
@@ -27,8 +27,6 @@ export const authRequestApi = axios.create({
   timeout: 10000,
   headers: { ...axiosHeaders },
 });
-
-
 
 export const API_ROUTES = {
   getRequestToken: () => authRequestApi.get("oauth/request_token"),

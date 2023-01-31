@@ -9,16 +9,26 @@ const LoginView = () => {
   const dispatch = useAppDispatch();
   const login = useAppSelector(state => state.login);
 
-  console.log(login);
+  console.log(login, "login");
+
+  let isAuth = false;
+
+  const {
+    data: { oauth_token },
+  } = login;
 
   useEffect(() => {
-    dispatch(getToken());
-    if (!isEmpty(login.data)) {
+    if (!isAuth) {
+      dispatch(getToken());
+    }
+    if (!isEmpty(oauth_token)) {
       window.location.replace(
-        `https://discogs.com/oauth/authorize?oauth_token=${login.data}`
+        `https://discogs.com/oauth/authorize?oauth_token=${oauth_token}`
       );
     }
-  }, []);
+
+    isAuth = true;
+  }, [dispatch]);
 
   return (
     <div>
